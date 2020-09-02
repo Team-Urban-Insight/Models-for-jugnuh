@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'basic'
+    'basic',
+    'orders',
+    'services',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +123,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+# STATIC_URL = '/static/'
+MEDIA_ROOT = 'media'
+# STATICFILES_DIRS = [
+#     STATIC_DIR
+# ]
