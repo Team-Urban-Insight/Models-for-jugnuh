@@ -2,7 +2,7 @@ from django.db import models
 from basic.models import Service_Provider, User
 # Create your models here.
 class Order(models.Model):
-    customer = models.ForeignKey(User, models.SET_NULL)
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     amount = models.IntegerField()
 
 
@@ -13,5 +13,5 @@ class OrderItem(models.Model):
     class Meta:
         unique_together = ['provider', 'order']
 
-    provider = models.ForeignKey(Service_Provider, models.SET_NULL)
+    provider = models.ForeignKey(Service_Provider, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
