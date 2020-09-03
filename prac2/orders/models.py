@@ -2,11 +2,11 @@ from django.db import models
 from basic.models import Service_Provider, User
 # Create your models here.
 class Order(models.Model):
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     amount = models.IntegerField()
 
     def __str__(self):
-        return self.customer
+        return self.user.username
 
 
 class OrderItem(models.Model):
@@ -20,4 +20,4 @@ class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.order.customer
+        return self.order.user.username  # not able to use customer's name - type user error

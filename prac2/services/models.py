@@ -33,3 +33,11 @@ class Schedule(models.Model):
 
     def __str__(self):
         return self.provider
+
+class Provides(models.Model):
+    provider = models.ForeignKey(Service_Provider, on_delete=models.CASCADE)
+    service_category = models.ForeignKey(Service_Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        str2 = str(self.provider) +'- '+str(self.service_category.category_name)
+        return str2
