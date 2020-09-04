@@ -14,9 +14,9 @@ class OrderItem(models.Model):
     order_date_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ['provider', 'order']
+        unique_together = ['provides', 'order']
 
-    provider = models.ForeignKey(Service_Provider, on_delete=models.CASCADE)
+    provides = models.ForeignKey('services.Provides', on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
 
     def __str__(self):
