@@ -17,6 +17,9 @@ class Service_Provider(models.Model):
     bank_account = models.CharField(max_length=256, blank=True, null=True, default=None)
     avg_rating = models.FloatField(blank=True, null=True, default=0)
 
+    class Meta:
+        verbose_name_plural = 'Service Providers'
+
     def __str__(self):
         return self.user.username
 
@@ -33,8 +36,8 @@ class Review(models.Model):
     def save(self, *args, **kwargs):
 
         # logic to update 'avg_rating' field of respective Provider
-        
-        # REVIEW: Alse prevent multiple ratings (in views)
+
+        # TODO: Alse prevent multiple ratings (in views)
         selected_provider = Service_Provider.objects.get(user=self.provider)
         # Get the no. of existing ratings of that provider
         total_ratings_no = Review.objects.filter(provider=self.provider).count()
